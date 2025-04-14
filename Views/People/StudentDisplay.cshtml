@@ -1,0 +1,120 @@
+﻿@model List<NtandoMabuthoStudyGroupP2.Models.Student>
+
+@{
+    ViewBag.Title = "Student List";
+}
+
+<h2>Student List</h2>
+<!-- Link to Add Student -->
+<div>
+    @Html.ActionLink("Add New Student", "Create", null, new { @class = "btn btn-primary" })
+</div>
+
+<!-- Search Box -->
+<div class="form-inline mb-3">
+    <input type="text" id="searchBox" class="form-control" placeholder="Search by First Name" style="width: 300px;" />
+    <button type="button" id="searchBtn" class="btn btn-primary ml-2">Search</button>
+</div>
+
+
+
+<!-- Student Table -->
+<table class="table table-bordered" id="studentTable">
+    <thead>
+        <tr>
+            <th>Student Number</th>
+            <th>First Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.StudentNumber</td>
+                <td class="first-name">@student.FirstNaam</td>
+                <td>@student.Surname</td>
+                <td>@student.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!-- Storage Buttons -->
+<div class="mb-3">
+    <button type="button" class="btn btn-success" onclick="saveToLocal()">Save to Local Storage</button>
+    <button type="button" class="btn btn-info ml-2" onclick="loadFromLocal()">Load from Local Storage</button>
+    <button type="button" class="btn btn-danger ml-2" onclick="clearLocal()">Clear Local Storage</button>
+</div>
+
+
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // 🔍 Search Function
+        $('#searchBtn').click(function () {
+            const searchTerm = $('#searchBox').val().toLowerCase();
+
+            $('#studentTable tbody tr').each(function () {
+                const row = $(this);
+                const firstName = row.find('.first-name').text().toLowerCase();
+
+                row.css('color', ''); // Reset
+
+                if (searchTerm && firstName.includes(searchTerm)) {
+                    row.css('color', 'red');
+                    setTimeout(() => row.css('color', ''), 3000); // Reset after 3 seconds
+                }
+            });
+        });
+    });
+
+    // 💾 Save to Local Storage (raw string, no JSON)
+    function saveToLocal() {
+        let data = '';
+        $('#studentTable tbody tr').each(function () {
+            let row = $(this);
+            let rowData = row.find('td').map(function () {
+                return $(this).text();
+            }).get().join('|'); // Separate with pipe symbol
+            data += rowData + '\n';
+        });
+
+        localStorage.setItem('studentData', data.trim());
+        alert("Student list saved to local storage.");
+    }
+
+    // 📥 Load from Local Storage
+    function loadFromLocal() {
+        const data = localStorage.getItem('studentData');
+        if (!data) {
+            alert("No data found in local storage.");
+            return;
+        }
+
+        const rows = data.split('\n');
+        let newBody = '';
+        rows.forEach(row => {
+            const cells = row.split('|');
+            newBody += '<tr>';
+            newBody += `<td>${cells[0]}</td>`;
+            newBody += `<td class="first-name">${cells[1]}</td>`;
+            newBody += `<td>${cells[2]}</td>`;
+            newBody += `<td>${cells[3]}</td>`;
+            newBody += '</tr>';
+        });
+
+        $('#studentTable tbody').html(newBody);
+    }
+
+    // 🧹 Clear Local Storage
+    function clearLocal() {
+        localStorage.removeItem('studentData');
+        alert("Local storage cleared.");
+    }
+</script>
+
+
+

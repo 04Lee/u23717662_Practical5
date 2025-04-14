@@ -1,0 +1,141 @@
+﻿
+.menu {
+    background-color: black;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+    font-family: 'Franklin Gothic';
+    background: #1a252f;
+    padding: 15px;
+    text-align: center;
+}
+
+
+body {
+    background-color: lightgreen;
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    color: darkblue;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+.containerB {
+    text-align: center;
+    border-block: 5px solid black;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+    border-bottom: 5px solid black;
+    padding-block:10px;
+    margin:10px 0;
+}
+
+.containerH {
+    text-align: center;
+    border-block: 5px solid black;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+    border-bottom: 5px solid black;
+    padding-block: 10px;
+    margin: 10px 0;
+
+}
+
+.containerM {
+    text-align: center;
+    border-block: 5px solid black;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+    border-bottom: 5px solid black;
+    padding-block: 10px;
+    margin: 10px 0;
+    
+}
+.containerImg {
+    left: auto; /* Aligns the container to the left */
+    top: 10px; /* Keeps the top margin */
+    width: 2px; /* Adjusts the width of the container */
+    height: 1px; /* Ensures the height adjusts based on the image aspect ratio */
+    bottom: auto; /* Removes the bottom margin */
+    border-block: 100px;
+    transition: transform 0.3s ease;
+}
+.containerImg2 {
+    position: center; /* Positions the container relative to its nearest positioned ancestor */
+    right: auto; /* Aligns the container to the right side */
+    top: 10px; /* Keeps the top margin */
+    width: 200px; /* Adjusts the width of the container */
+    height: auto; /* Ensures the height adjusts based on the aspect ratio of the content */
+    bottom: auto; /* Removes the bottom margin */
+    margin-left: 84%; /* Pushes the image container to the right */
+    transition: transform 0.3s ease;
+}
+.containerImg:hover img {
+    transform: scaleX(-1); /* Flips the image horizontally */
+}
+.containerImg2:hover img {
+    transform: scaleX(-1); /* Flips the image horizontally */
+}
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0 20px;
+    padding: 10px;
+    transition: color 0.3s ease-in-out;
+}
+.menu a:hover {
+    color: #f1c40f;
+}
+
+
+.menu-item {
+    display: block; /* Makes each menu item take up the full width */
+    width: 100%; /* Ensures each item takes the full width of the parent container */
+    color: white; /* Text color */
+    text-decoration: none; /* Removes underlines from links */
+    padding: 10px; /* Adds padding around the text */
+    text-align: center; /* Centers the text */
+    margin-bottom: 10px; /* Adds space between items */
+    transition: background-color 0.3s ease; /* Adds smooth transition for hover effect */
+}
+.menu-item:hover {
+        background-color: gray;
+}/* Changes background color when hovered */
+
+.text{
+    margin-left:25%;
+    text-align:center;
+    width:50%;
+}
+
+
+
+
+
+   
+
+       
