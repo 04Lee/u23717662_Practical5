@@ -6,20 +6,18 @@
 
 <h2>Student List</h2>
 
-<!-- Link to Add Student -->
+
 <div>
     @Html.ActionLink("Create New", "Create", null, new { @class = "button" })
 </div>
 
 <br />
 
-<!-- Search Box -->
 <div class="form-inline mb-3">
     <input type="text" id="searchBox" class="form-control" placeholder="Search by First Name" style="width: 300px;" />
     <button type="button" id="searchBtn" class="btn btn-primary">Search</button>
 </div>
 
-<!-- Student Table -->
 <table class="table table-bordered" id="studentTable">
     <thead>
         <tr>
@@ -39,42 +37,32 @@
                 <td>@student.Surname</td>
                 <td>@student.Email</td>
                 <td>
-                    <button class="btn btn-danger delete-btn">Delete</button>
+                    <button class="btn btn-danger" onclick="deleteRow(this)">Delete</button>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 <script>
-
-    // Handle delete button clicks
-    document.addEventListener("DOMContentLoaded", function () {
-        const tableBody = document.getElementById("studentTableBody");
-
-        tableBody.addEventListener("click", function (e) {
-            if (e.target && e.target.classList.contains("delete-btn")) {
-                const row = e.target.closest("tr");
-                if (row) {
-                    row.remove();
-                }
-            }
-        });
-    });
+    function deleteRow(button) {
+        const row = button.closest('tr');
+        if (row) {
+            row.remove();
+        }
+    }
 </script>
 
-<!-- Storage Buttons -->
+
 <div class="mb-3">
     <button type="button" class="button" onclick="saveToLocal()">Save to Local Storage</button>
     <button type="button" class="button" onclick="loadFromLocal()">Load from Local Storage</button>
     <button type="button" class="button" onclick="clearLocal()">Clear Local Storage</button>
 </div>
-
-<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
     $(document).ready(function () {
-        // Search Function
+        
         $('#searchBtn').click(function () {
             const searchTerm = $('#searchBox').val().toLowerCase();
             $('#studentTableBody tr').each(function () {
@@ -91,22 +79,20 @@
         });
     });
 
-    // Save to Local Storage
+    
     function saveToLocal() {
         let data = '';
         $('#studentTableBody tr').each(function () {
             let row = $(this);
             let rowData = row.find('td').map(function () {
                 return $(this).text().trim();
-            }).get().slice(0, 4).join('|'); // Only get the 4 student fields (ignore Delete btn)
+            }).get().slice(0, 4).join('|'); 
             data += rowData + '\n';
         });
 
         localStorage.setItem('studentData', data.trim());
         alert("Student list saved to local storage.");
     }
-
-    // Load from Local Storage
     function loadFromLocal() {
         const data = localStorage.getItem('studentData');
         if (!data) {
@@ -129,12 +115,21 @@
 
         $('#studentTableBody').html(newBody);
     }
-
-    // Clear Local Storage
     function clearLocal() {
         localStorage.removeItem('studentData');
         alert("Local storage cleared.");
     }
+    document.addEventListener("DOMContentLoaded", function () {
+        const tableBody = document.getElementById("studentTableBody");
 
+        tableBody.addEventListener("click", function (e) {
+            if (e.target && e.target.classList.contains("delete-btn")) {
+                const row = e.target.closest("tr");
+                if (row) {
+                    row.remove();
+                }
+            }
+        });
+    });
 </script>
 

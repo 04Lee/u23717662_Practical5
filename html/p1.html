@@ -41,14 +41,14 @@
             </ul>
         </nav>
 
-        <!-- Tab Buttons -->
+       
         <div>
             <button  class="button" onclick="showTab('bio')">Biography and Background</button>
             <button  class="button" onclick="showTab('hobbies')">Hobbies</button>
             <button  class="button" onclick="showTab('modules')">Modules</button>
         </div>
 
-        <!-- Biography Section -->
+        
         <div id="bio" class="tab-section">
             <div class="containerB">
                 <div class="containerImg">
@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <!-- Hobbies Section -->
+        
         <div id="hobbies" class="tab-section">
             <div class="containerH">
                 <div class="containerImg2">
@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <!-- Modules Section -->
+        
         <div id="modules" class="tab-section">
             <div class="containerM">
                 <div class="table-container">
@@ -108,13 +108,13 @@
 
     <script>
         function showTab(tabId) {
-            // Hide all sections
+           
             const sections = document.querySelectorAll('.tab-section');
             sections.forEach(section => {
                 section.style.display = 'none';
             });
 
-            // Show selected section
+            
             const selectedSection = document.getElementById(tabId);
             if (selectedSection) {
                 selectedSection.style.display = 'block';
