@@ -1,5 +1,6 @@
 ﻿using NtandoMabuthoStudyGroupP2.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace NtandoMabuthoStudyGroupP2.Controllers
@@ -37,5 +38,9 @@ namespace NtandoMabuthoStudyGroupP2.Controllers
         {
             return View(studentList);
         }
+       
+        
     }
+
 }
+

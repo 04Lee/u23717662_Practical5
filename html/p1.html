@@ -3,11 +3,31 @@
 <head>
     <meta charset="utf-8" />
     <title>Ntando Mchunu</title>
+    <link rel="stylesheet" href="StyleSheet.css" />
+    <style>
+        .tab-button {
+            margin: 5px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+            .tab-button:hover {
+                background-color: #0056b3;
+            }
+
+        .tab-section {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <link rel="stylesheet" href="StyleSheet.css" />
     <header>
-        <h1>Person 1: Jose Edu Solsona</h1> <!-- Name of the person, change as needed -->
+        <h1>Person 1: Jose Edu Solsona</h1>
         <nav>
             <ul class="menu">
                 <li><a href="/Home/SimpleStart" class="menu-item">Home</a></li>
@@ -18,38 +38,43 @@
                 <li><a href="p4.html" class="menu-item">Person4</a></li>
                 <li><a href="p5.html" class="menu-item">Person5</a></li>
                 <li><a href="javascript:window.history.back()" class=" menu-item">Previous Page</a></li>
-
-
             </ul>
         </nav>
 
-        <div class=" containerB">
-            <div class="containerImg">
-                <img src="Images/peter-parker-Cropped.jpg" width="300" height="150" />
-            </div>
-            <h1>Biography and Background</h1>
-
-            <p class="text"> Jose Edu Solsona was born in Equitorial Guinea,and went to school in the Capital City of South Africa,Pretoria.He studies Bcom Data Science and Staticstics becauses he believes that it could help be the man he needs to be in the future.
-            
-            </p>
-            <br />
-            <br />
-
+        <!-- Tab Buttons -->
+        <div>
+            <button  class="button" onclick="showTab('bio')">Biography and Background</button>
+            <button  class="button" onclick="showTab('hobbies')">Hobbies</button>
+            <button  class="button" onclick="showTab('modules')">Modules</button>
         </div>
-        <div class=" containerH">
-            <div class="containerImg2" >
-                <img src="Images/antman-and-the-wasp-marvel-4.jpg" width="300" height="150" />
-            </div>
-            <h1>Hobbies</h1>
-            <p class=" h_text"> Loves playing games</p>
 
+        <!-- Biography Section -->
+        <div id="bio" class="tab-section">
+            <div class="containerB">
+                <div class="containerImg">
+                    <img src="Images/peter-parker-Cropped.jpg" width="300" height="150" />
+                </div>
+                <h1>Biography and Background</h1>
+                <p class="text"> Jose Edu Solsona was born in Equitorial Guinea, and went to school in the Capital City of South Africa, Pretoria. He studies Bcom Data Science and Statistics because he believes that it could help him become the man he needs to be in the future.</p>
+            </div>
         </div>
-        <div class=" containerM">
-            
-            <p> 
+
+        <!-- Hobbies Section -->
+        <div id="hobbies" class="tab-section">
+            <div class="containerH">
+                <div class="containerImg2">
+                    <img src="Images/antman-and-the-wasp-marvel-4.jpg" width="300" height="150" />
+                </div>
+                <h1>Hobbies</h1>
+                <p class="h_text">Loves playing games</p>
+            </div>
+        </div>
+
+        <!-- Modules Section -->
+        <div id="modules" class="tab-section">
+            <div class="containerM">
                 <div class="table-container">
                     <h1>Modules</h1>
-
                     <table>
                         <thead>
                             <tr>
@@ -76,15 +101,27 @@
                             </tr>
                         </tbody>
                     </table>
-                    </div>
-
-</p>
-
+                </div>
+            </div>
         </div>
     </header>
 
-    <section>
-    </section>
+    <script>
+        function showTab(tabId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.tab-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
 
+            // Show selected section
+            const selectedSection = document.getElementById(tabId);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+            }
+        }
+
+       
+    </script>
 </body>
 </html>
